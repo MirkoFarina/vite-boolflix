@@ -27,7 +27,8 @@ export default {
         :titolo="films.title" 
         :titoloOriginal="films.original_title"
         :lingua="films.original_language"
-        :voto="films.vote_average"/>
+        :voto="films.vote_average"
+        :pathImg="films.poster_path"/>
     </ul>
   </div>
     <div v-if="store.isSearch">
@@ -40,7 +41,8 @@ export default {
         :titolo="serieTv.name" 
         :titoloOriginal="serieTv.original_name"
         :lingua="serieTv.original_language"
-        :voto="serieTv.vote_average"/>
+        :voto="serieTv.vote_average"
+        :pathImg="serieTv.poster_path"/>
     </ul>
     </div>
    </main>
@@ -52,6 +54,6 @@ export default {
     main {
         color: white;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
     }
 </style>

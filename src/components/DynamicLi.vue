@@ -6,11 +6,13 @@ export default {
         titolo: String,
         titoloOriginal: String,
         lingua: String,
-        voto: Number
+        voto: Number,
+        pathImg: String
     },
     data(){
         return {
             lenguageNotPresents: [
+                '',
                 'ja',
                 'ko',
                 'zh'
@@ -18,7 +20,7 @@ export default {
         }
     },
     methods: {
-
+       
     },
     computed: {
         getClassName(){
@@ -32,7 +34,16 @@ export default {
             if(this.lenguageNotPresents.includes(this.lingua)){
                 return 'NOT FOUND'
             }
-        }
+        },
+        getImg(){
+            if(this.pathImg == null) {
+                return false;
+            }
+            return 'https://image.tmdb.org/t/p/w300/' + this.pathImg;
+        },
+        getStars(){
+           return  Math.ceil(this.voto / 2);
+       }
     }
 }
 </script>
@@ -53,7 +64,11 @@ export default {
                 </span> 
             </h3>
             <h3>
-                voto: {{voto}}
+                voto: {{getStars}}
+            </h3>
+            <img :src="getImg" alt="">
+            <h3 v-if="!getImg" >
+                IMAGE: IMG NOT FOUND
             </h3>
         </li>
 </template>
