@@ -1,5 +1,5 @@
 <script>
-
+import StarRating from 'vue-star-rating';
 export default {
     name:'DynamicLi',
     props: {
@@ -9,6 +9,9 @@ export default {
         voto: Number,
         pathImg: String
     },
+    components: {
+        StarRating
+    },  
     data(){
         return {
             lenguageNotPresents: [
@@ -32,7 +35,7 @@ export default {
         },
         lenguageNotFound(){
             if(this.lenguageNotPresents.includes(this.lingua)){
-                return 'NOT FOUND'
+                return this.lingua
             }
         },
         getImg(){
@@ -63,11 +66,11 @@ export default {
                     {{lenguageNotFound}}
                 </span> 
             </h3>
-            <h3>
-                voto: {{getStars}}
-            </h3>
-            <img :src="getImg" alt="">
-            <h3 v-if="!getImg" >
+            <div>
+                <star-rating :rating="getStars" read-only="true" :show-rating="false" star-size="30"></star-rating>
+            </div>
+            <img v-if="getImg" :src="getImg" :alt="titolo">
+            <h3 v-else>
                 IMAGE: IMG NOT FOUND
             </h3>
         </li>
