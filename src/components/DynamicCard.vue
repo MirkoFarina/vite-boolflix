@@ -1,7 +1,7 @@
 <script>
 import StarRating from 'vue-star-rating';
 export default {
-    name:'DynamicLi',
+    name:'DynamicCard',
     props: {
         titolo: String,
         titoloOriginal: String,

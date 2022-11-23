@@ -1,10 +1,10 @@
 <script>
 import {store} from '../data/store';
-import DynamicLi from './DynamicLi.vue';
+import DynamicCard from './DynamicCard.vue';
 export default {
     name:'MainApp',
     components: {
-        DynamicLi
+        DynamicCard
     },
     data(){
         return {
@@ -20,9 +20,9 @@ export default {
         <div class="container">
             <div class="row" v-if="store.isSearch && store.arrayFilms.length">
                 <h3>
-                    films
+                    film
                 </h3>
-                <DynamicLi 
+                <DynamicCard 
                     v-for="(films, index) in store.arrayFilms" :key="index" 
                     :titolo="films.title" 
                     :titoloOriginal="films.original_title"
@@ -36,7 +36,7 @@ export default {
                 <h3>
                     serie tv
                 </h3>
-                <DynamicLi 
+                <DynamicCard 
                     v-for="(serieTv, index) in store.arraySerieTv" :key="index" 
                     :titolo="serieTv.name" 
                     :titoloOriginal="serieTv.original_name"
