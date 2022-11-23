@@ -54,7 +54,8 @@ export default {
 
 
 <template>
-        <div class="mf-card">
+        <div class="col">
+            <div class="mf-card">
             <div class="poster">
                 <img v-if="getImg" :src="getImg" :alt="titolo">
                 <div v-else>
@@ -102,6 +103,7 @@ export default {
             
             </div>
         </div>
+        </div>
 </template>
 
 <style lang="scss" scoped>
@@ -113,7 +115,7 @@ export default {
     }
     .mf-card {
         position: relative;
-        width: calc(100% / 6);
+        width: 100%;
         height: 300px;
         color: white;
         margin: 10px 0;
@@ -139,13 +141,13 @@ export default {
             transform: translateX(-50%) ;
             z-index: 2;
             background-color: $background-color;
-            height: 30%;
+            height: 0;
             opacity: 0;
-            width:80%;
+            width:0;
             padding: 10px;
             padding-bottom: 0;
             box-shadow: 2px 3px 13px 14px #000000;
-            transition: all .4s;
+            transition: all .7s;
             .title {
                 small {
                     font-weight: 400;

@@ -26,7 +26,7 @@ export default {
             <LoaderApp />
         </div>
         <div class="container" v-else>
-            <div class="row" v-if="store.isSearch && store.arrayFilms.length">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5" v-if="store.isSearch && store.arrayFilms.length">
                 <h3 v-if="store.isPopular">
                    most Popular Film
                 </h3>
