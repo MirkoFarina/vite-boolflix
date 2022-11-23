@@ -15,15 +15,16 @@ export default {
         }
     },
     methods: {
-        getApi(){
+        getApi(movie, serieTv, booleano){
             store.isSearch = true;
-            axios.get(store.getApiMovie, {
+            axios.get(movie, {
                 params: {
                     query: store.query,
                     language: store.language
                 }
             })
                 .then(films => {
+                    store.isPopular = booleano;
                     store.arrayFilms= [];
                     store.arrayFilms = films.data.results;
                     store.isLoad = true;
@@ -31,13 +32,14 @@ export default {
                 .catch(error => {
                     store.error = error;
                 }) 
-            axios.get(store.getApiSerieTv, {
+            axios.get(serieTv, {
                 params: {
                     language: store.language,
                     query: store.query
                 }
             })
                 .then(serieTv => {
+                    store.isPopular = booleano;
                     store.arraySerieTv = [];
                     store.arraySerieTv = serieTv.data.results;
                     store.isLoad = true;
@@ -46,13 +48,16 @@ export default {
                     store.error = error;
                 }) 
         }
+    },
+    mounted(){
+        this.getApi(store.getApiPopularFilms, store.getApiPopularTv, true)
     }
 }
 </script>
 
 
 <template>
-    <HeaderApp @search="getApi()" />
+    <HeaderApp @search="getApi(store.getApiMovie, store.getApiSerieTv, false)" />
     <MainApp />
 </template>
 
