@@ -26,13 +26,13 @@ export default {
             <LoaderApp />
         </div>
         <div class="container" v-else>
+            <h3 v-if="store.isPopular">
+               most Popular Film
+            </h3>
+            <h3 v-else>
+                film
+            </h3>
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5" v-if="store.isSearch && store.arrayFilms.length">
-                <h3 v-if="store.isPopular">
-                   most Popular Film
-                </h3>
-                <h3 v-else>
-                    film
-                </h3>
                 <DynamicCard 
                     v-for="(films, index) in store.arrayFilms" :key="index" 
                     :titolo="films.title" 
@@ -43,13 +43,13 @@ export default {
                     :description="films.overview"/>
             </div>
             
-            <div class="row" v-if="store.isSearch && store.arraySerieTv.length">
-                <h3 v-if="store.isPopular">
-                   most Popular SerieTv
-                </h3>
-                <h3 v-else>
-                    serietv
-                </h3>
+            <h3 v-if="store.isPopular">
+               most Popular SerieTv
+            </h3>
+            <h3 v-else>
+                serietv
+            </h3>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5" v-if="store.isSearch && store.arraySerieTv.length">
                 <DynamicCard 
                     v-for="(serieTv, index) in store.arraySerieTv" :key="index" 
                     :titolo="serieTv.name" 
@@ -84,5 +84,6 @@ export default {
     }
     .row {
         display: flex;
+        margin-bottom: 150px;
     }
 </style>
