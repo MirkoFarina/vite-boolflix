@@ -19,13 +19,17 @@ export default {
             store.isSearch = true;
             axios.get(store.getApiMovie, {
                 params: {
-                    language: store.language,
-                    query: store.query
+                    query: store.query,
+                    language: store.language
                 }
             })
                 .then(films => {
                     store.arrayFilms= [];
                     store.arrayFilms = films.data.results;
+                    store.isLoad = true;
+                })
+                .catch(error => {
+                    store.error = error;
                 }) 
             axios.get(store.getApiSerieTv, {
                 params: {
@@ -36,7 +40,11 @@ export default {
                 .then(serieTv => {
                     store.arraySerieTv = [];
                     store.arraySerieTv = serieTv.data.results;
+                    store.isLoad = true;
                 })
+                .catch(error => {
+                    store.error = error;
+                }) 
         }
     }
 }

@@ -5,9 +5,11 @@ export const store= reactive({
     getApiPopularTv: 'https://api.themoviedb.org/3/tv/popular?api_key=c97c2cdd0865f2d6f7af8f6643f2eec3',
     getApiMovie: 'https://api.themoviedb.org/3/search/movie?api_key=c97c2cdd0865f2d6f7af8f6643f2eec3',
     getApiSerieTv: 'https://api.themoviedb.org/3/search/tv?api_key=c97c2cdd0865f2d6f7af8f6643f2eec3',
+    query: '',
+    language: 'it-IT',
+    error: '',
     arrayFilms: [],
     arraySerieTv: [],
-    language: 'it_IT',
-    query: '',
-    isSearch: false
+    isSearch: false,
+    isLoad: false
 })

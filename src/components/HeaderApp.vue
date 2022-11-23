@@ -18,7 +18,7 @@ export default {
                 BOOLFLIX
             </h1>
             <nav>
-                <input v-model="store.query" type="text">
+                <input v-model.trim="store.query" type="text">
                 <button @click="$emit('search')" class="btn btn-primary">
                     SEARCH
                 </button>
