@@ -12,5 +12,6 @@ export const store= reactive({
     arraySerieTv: [],
     isSearch: false,
     isLoad: false,
-    isPopular: true
+    isPopular: true,
+    showFilm: true
 })

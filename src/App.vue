@@ -58,11 +58,22 @@ export default {
 
 <template>
     <HeaderApp @search="getApi(store.getApiMovie, store.getApiSerieTv, false)" />
-    <MainApp />
+    <MainApp class="margin-top" />
 </template>
 
 
 
 <style lang="scss">
     @use './scss/general';
+    .margin-top {
+        margin-top: 80px;
+    }
+    .mf-button {
+        background-color: #e50914;
+        font-size: .9rem;
+        color: white;
+        &:hover {
+            background-color: #a30911;
+        }
+    }
 </style>
