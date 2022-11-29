@@ -147,8 +147,7 @@ export default {
             padding: 10px;
             padding-bottom: 0;
             box-shadow: 2px 3px 13px 14px #000000;
-            transition: opacity .9s;
-            transition: width .6s;
+            transition: height .6s, opacity .5s;
             .title {
                 small {
                     font-weight: 400;
