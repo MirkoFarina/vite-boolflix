@@ -47,10 +47,36 @@ export default {
                 .catch(error => {
                     store.error = error;
                 }) 
+        },
+        getGenere(movie, serieTv){
+            axios.get(movie, {
+                params: {
+                    language: store.language
+                }
+            })
+                .then(movies => {
+                    store.arrayGenereFilm = movies.data.genres;
+                })
+                .catch(error => {
+                    store.error = error
+                })
+            
+                axios.get(serieTv, {
+                    params: {
+                        language: store.language
+                    }
+                })
+                    .then(tv => {
+                        store.arrayGenereTv = tv.data.genres;
+                    })
+                    .catch(error => {
+                        store.error = error
+                    })
         }
     },
     mounted(){
-        this.getApi(store.getApiPopularFilms, store.getApiPopularTv, true)
+        this.getApi(store.getApiPopularFilms, store.getApiPopularTv, true);
+        this.getGenere(store.getGenereFilms, store.getGenereTv);
     }
 }
 </script>
