@@ -41,7 +41,9 @@ export default {
                     :lingua="item.original_language"
                     :voto="item.vote_average"
                     :pathImg="item.poster_path"
-                    :description="item.overview"/>
+                    :description="item.overview"
+                    :cardId="item.id"
+                    :isFilm="item.title"/>
         </SwiperSlide>
     </swiper>
 </template>

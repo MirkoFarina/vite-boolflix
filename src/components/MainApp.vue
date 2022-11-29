@@ -21,12 +21,12 @@ export default {
 
 
 <template>
-    <div  v-if="store.error" class="error margin-top">
+    <!-- <div  v-if="store.error" class="error margin-top">
         ATTENZIONE !!!! <br>
         {{store.error}} <br>
         RICARICARE LA PAGINA!!
-    </div>
-    <main v-else class="margin-top" >
+    </div> -->
+    <main  class="margin-top" >
         <div id="loader" v-if="!store.isLoad">
             <LoaderApp />
         </div>
@@ -34,7 +34,7 @@ export default {
             <div id="window-page" v-if="store.isPopular">
                 <WindowPage />
             </div>
-            <div class="px-5 py-5" v-else>
+            <div class="px-5 py-2" v-else>
                 <h2>
                     film
                 </h2>

@@ -27,9 +27,9 @@ export default {
 <template>
     <header>
         <div class="container-md mf-header">
-            <h1>
-                BOOLFLIX
-            </h1>
+            <div class="logo">
+                <img src="/logo-boolflix.png" alt="logo">
+            </div>
             <nav>
                 <ul class="d-flex">
                     <li v-for="(item, index) in dataNav" :key="index">
@@ -67,20 +67,26 @@ export default {
     .mf-header {
         @include centerFlex('vertical');
         @include justifyContents('between');
+        .logo {
+            img {
+                width: 150px;
+            }
+        }
         nav {
             ul {
                 list-style: none;
                 li {
                     margin-left: 10px;
                    a {
-                        color: $primary-color;
+                        color: white;
                         text-decoration: none;
                         text-transform: uppercase;
+                        font-size: .8rem;
                         &:hover {
                             text-decoration: underline;
                         }
                         &:active {
-                            color: white;
+                            color: $primary-color;
                         }
                    }
                 }

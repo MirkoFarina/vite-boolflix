@@ -1,5 +1,7 @@
 <script>
+import {store } from '../data/store';
 import StarRating from 'vue-star-rating';
+import axios from 'axios';
 export default {
     name:'DynamicCard',
     props: {
@@ -8,7 +10,9 @@ export default {
         lingua: String,
         voto: Number,
         pathImg: String,
-        description: String
+        description: String,
+        cardId: Number,
+        isFilm: String
     },
     components: {
         StarRating
@@ -20,11 +24,35 @@ export default {
                 'ja',
                 'ko',
                 'zh'
-            ]
+            ],
+            acthors: []
         }
     },
     methods: {
-       
+       getActor(isFilm) {
+        if(isFilm) {
+            axios.get(
+                `https://api.themoviedb.org/3/movie/${this.cardId}/credits?api_key=c97c2cdd0865f2d6f7af8f6643f2eec3&language=${store.language}`
+            )
+            .then(result => {
+                this.acthors = result.data.cast;
+            })
+            .catch(error => {
+                store.error = error;
+            })
+        } 
+        else {
+            axios.get (
+                `https://api.themoviedb.org/3/tv/${this.cardId}/credits?api_key=c97c2cdd0865f2d6f7af8f6643f2eec3&language=${store.language}`
+            )
+            .then(result => {
+                this.acthors = result.data.cast;
+            })
+            .catch(error => {
+                store.error = error;
+            })
+        }
+       }
     },
     computed: {
         getClassName(){
@@ -55,7 +83,7 @@ export default {
 
 <template>
         <div class="col">
-            <div class="mf-card">
+            <div class="mf-card" @mouseover="getActor(isFilm)">
             <div class="poster">
                 <img v-if="getImg" :src="getImg" :alt="titolo">
                 <div v-else>
@@ -100,7 +128,13 @@ export default {
                     </div>
                    
                 </div>
-            
+                <div class="acthors">
+                    <ul>
+                        <li v-for="(acthor, index) in acthors.splice(0,4)" :key="index" >
+                            {{acthor.name}}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         </div>
@@ -147,7 +181,7 @@ export default {
             padding: 10px;
             padding-bottom: 0;
             box-shadow: 2px 3px 13px 14px #000000;
-            transition: height .6s, opacity .5s;
+            transition: height .6s, opacity .7s;
             .title {
                 small {
                     font-weight: 400;

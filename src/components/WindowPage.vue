@@ -18,13 +18,13 @@ export default {
 <template>
     <div v-if="store.showFilm" class="content-film position-relative">
         <h3>
-            most Popular Film
+            Popular Film
         </h3>
         <SwiperWindow :array="store.arrayFilms" />
     </div>
     <div v-else class="content-serieTv position-relative">
         <h3>
-            most Popular serietv
+           Popular serietv
         </h3>
         <SwiperWindow :array="store.arraySerieTv" />
     </div>
