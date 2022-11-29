@@ -11,6 +11,8 @@ export default {
     },
     methods: {
         showNoSHow(booleano){
+            store.query = '';
+            store.isPopular = true;
             if (booleano) {
                 store.showFilm = true;
             } else {
@@ -31,7 +33,7 @@ export default {
             <nav>
                 <ul class="d-flex">
                     <li v-for="(item, index) in dataNav" :key="index">
-                        <a @click="showNoSHow(item.isFilm)" :href="item.href">
+                        <a @click="$emit('show'), showNoSHow(item.isFilm) " :href="item.href">
                             {{item.name}}
                         </a>
                     </li>

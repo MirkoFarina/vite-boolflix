@@ -116,12 +116,12 @@ export default {
     .mf-card {
         position: relative;
         width: 100%;
-        height: 300px;
+        height: 400px;
         color: white;
-        margin: 10px 0;
+        margin-bottom: 40px;
         &:hover .description{
                 opacity: 1;
-                width: 150%;
+                width: 100%;
                 height: 100%;
             }
         .poster {
@@ -147,7 +147,8 @@ export default {
             padding: 10px;
             padding-bottom: 0;
             box-shadow: 2px 3px 13px 14px #000000;
-            transition: all .7s;
+            transition: opacity .9s;
+            transition: width .6s;
             .title {
                 small {
                     font-weight: 400;

@@ -1,15 +1,15 @@
 <script>
 import {store} from '../data/store';
 import WindowPage from './WindowPage.vue';
-import DynamicCard from './DynamicCard.vue';
 import LoaderApp from './LoaderApp.vue';
+import SwiperCards from './SwiperCards.vue';
 
 export default {
     name:'MainApp',
     components: {
-        DynamicCard,
         LoaderApp,
-        WindowPage
+        WindowPage,
+        SwiperCards
     },
     data(){
         return {
@@ -21,10 +21,12 @@ export default {
 
 
 <template>
-    <div v-if="store.error" class="error">
-        {{store.error}}
+    <div  v-if="store.error" class="error margin-top">
+        ATTENZIONE !!!! <br>
+        {{store.error}} <br>
+        RICARICARE LA PAGINA!!
     </div>
-    <main v-else >
+    <main v-else class="margin-top" >
         <div id="loader" v-if="!store.isLoad">
             <LoaderApp />
         </div>
@@ -32,38 +34,24 @@ export default {
             <div id="window-page" v-if="store.isPopular">
                 <WindowPage />
             </div>
-            <div v-else>
-                <h3>
+            <div class="px-5 py-5" v-else>
+                <h2>
                     film
-                </h3>
-                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5" v-if="store.isSearch && store.arrayFilms.length">
-                
-                    <DynamicCard 
-                    v-for="(films, index) in store.arrayFilms" :key="index" 
-                    :titolo="films.title" 
-                    :titoloOriginal="films.original_title"
-                    :lingua="films.original_language"
-                    :voto="films.vote_average"
-                    :pathImg="films.poster_path"
-                    :description="films.overview"/>
+                </h2>
+                <div class="row " v-if="store.isSearch && store.arrayFilms.length">
+                    <SwiperCards :array="store.arrayFilms" />
                 </div>
             </div>
             
             <div v-if="!store.isPopular">
-                <h3>
-                    serietv
-                </h3>
-                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5" v-if="store.isSearch && store.arraySerieTv.length">
-                
-                    <DynamicCard 
-                    v-for="(serieTv, index) in store.arraySerieTv" :key="index" 
-                    :titolo="serieTv.name" 
-                    :titoloOriginal="serieTv.original_name"
-                    :lingua="serieTv.original_language"
-                    :voto="serieTv.vote_average"
-                    :pathImg="serieTv.poster_path"
-                    :description="serieTv.overview"/>
-                </div>
+                <div class="px-5 py-5">
+                    <h2>
+                        serie tv
+                    </h2>
+                    <div class="row " v-if="store.isSearch && store.arraySerieTv.length">
+                        <SwiperCards  :array="store.arraySerieTv"/>
+                    </div>
+                </div> 
             </div>
         </div>            
    </main>
@@ -72,6 +60,7 @@ export default {
 
 
 <style lang="scss" scoped>
+@use '../scss/partials/variables' as *;
     .error {
         text-align: center;
         font-size: 4rem;
@@ -85,8 +74,9 @@ export default {
             justify-content: center;
         }
     }
-    h3 {
+    h2 {
         text-transform: uppercase;
+        color: $primary-color;
     }
     .row {
         display: flex;

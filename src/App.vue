@@ -57,8 +57,8 @@ export default {
 
 
 <template>
-    <HeaderApp @search="getApi(store.getApiMovie, store.getApiSerieTv, false)" />
-    <MainApp class="margin-top" />
+    <HeaderApp @search="getApi(store.getApiMovie, store.getApiSerieTv, false)" @show="getApi(store.getApiPopularFilms, store.getApiPopularTv, true)" />
+    <MainApp />
 </template>
 
 
